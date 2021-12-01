@@ -1,18 +1,19 @@
 package br.com.joao.postagems.model.enumeratiom.pessoa;
 
-public enum Genero {
+import java.io.Serializable;
 
-	MASCULINO("masculino"),
-	FEMININO("feminino");
-	
+public enum Genero implements Serializable {
+
+	MASCULINO("masculino"), FEMININO("feminino");
+
 	private String descricao;
-	
+
 	private Genero(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
 	public String getDescricao() {
 		return descricao;
 	}
-	
+
 }
