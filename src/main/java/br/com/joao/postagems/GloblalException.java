@@ -9,9 +9,9 @@ import org.springframework.web.context.request.WebRequest;
 @ControllerAdvice
 public class GloblalException {
 
-    @ExceptionHandler
+    @ExceptionHandler({NullPointerException.class})
     public ResponseEntity<String> handleEx(Exception ex, WebRequest request){
-        return new ResponseEntity<>("Fanha interna: " + ex.getMessage(), HttpStatus.OK);
+        return new ResponseEntity<>("Fanha interna: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
