@@ -26,6 +26,9 @@ public class PessoaEntity implements Serializable {
 	private Byte idade;
 
 	@Column(nullable = false)
+	private String senha;
+
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Genero genero;
 

@@ -23,21 +23,14 @@ public class AutenticationFilter implements Filter {
             throws IOException, ServletException {
 
         final HttpServletRequest servletRequest = (HttpServletRequest) request;
-//        final Enumeration<String> headerNames = servletRequest.getHeaderNames();
         final String autorization = servletRequest.getHeader("autorization");
 
         if (autorization.equals("123")){
             chain.doFilter(request,response);
         } else {
-           final HttpServletResponse servletResponse = (HttpServletResponse) response;
-           servletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token inválido");
+            final HttpServletResponse servletResponse = (HttpServletResponse) response;
+            servletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token inválido");
         }
-
-//        while (headerNames.hasMoreElements()){
-//            final  String header = headerNames.nextElement();
-//            System.out.println(header);
-//        }
-
     }
 
 }
