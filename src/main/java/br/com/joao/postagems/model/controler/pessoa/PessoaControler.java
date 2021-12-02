@@ -1,10 +1,14 @@
 package br.com.joao.postagems.model.controler.pessoa;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -49,5 +53,24 @@ public class PessoaControler {
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-
+	
+	@GetMapping
+	public ResponseEntity<List<PessoaDto>> get(){
+		List<PessoaEntity> pessoas = pessoaRepo.findAll();
+		List<PessoaDto> pessoasDto = pessoas.stream()
+		.map(pessoaMapper::toDto)
+		.collect(Collectors.toList());
+		
+		return ResponseEntity.ok().body(pessoasDto);
+	}
+	
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<PessoaDto> getById(@PathVariable(value = "id") long id){
+		var pessoa = pessoaRepo.findById(id);
+		if(pessoa.isPresent()) {
+			return ResponseEntity.ok().body(pessoaMapper.toDto(pessoa.get()));
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
 }
