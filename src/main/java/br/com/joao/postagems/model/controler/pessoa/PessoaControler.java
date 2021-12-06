@@ -2,7 +2,7 @@ package br.com.joao.postagems.model.controler.pessoa;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
+
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +39,12 @@ public class PessoaControler {
 		Optional<PessoaEntity> oldPessoa = pessoaRepo.findById(id);
 		if(oldPessoa.isPresent()) {
 			PessoaEntity pessoaEntity = oldPessoa.get();
-			newPessoa.setNome(pessoaEntity.getNome());
-			newPessoa.setIdade(pessoaEntity.getIdade());
-			newPessoa.setGenero(pessoaEntity.getGenero());
-			
-			return ResponseEntity.ok().body(pessoaMapper.toDto(newPessoa));
+			pessoaEntity.setNome(newPessoa.getNome());
+			pessoaEntity.setIdade(newPessoa.getIdade());
+			pessoaEntity.setGenero(newPessoa.getGenero());
+			pessoaEntity.setSenha(newPessoa.getSenha());
+
+			return ResponseEntity.ok().body(pessoaMapper.toDto(pessoaRepo.save(pessoaEntity)));
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}

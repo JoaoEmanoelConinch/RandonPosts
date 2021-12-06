@@ -35,10 +35,11 @@ public class PessoaEntity implements Serializable {
 	public PessoaEntity() {
 	}
 
-	public PessoaEntity(Long id, String nome, Byte idade, Genero genero) {
+	public PessoaEntity(Long id, String nome, Byte idade, String senha, Genero genero) {
 		this.setId(id);
 		this.setNome(nome);
 		this.setIdade(idade);
+		this.setSenha(senha);
 		this.setGenero(genero);
 	}
 
@@ -72,5 +73,13 @@ public class PessoaEntity implements Serializable {
 
 	public void setGenero(Genero genero) {
 		this.genero = genero;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 }

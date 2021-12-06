@@ -12,6 +12,7 @@ public class PessoaMapper {
 		PessoaDto pessoaDto = new PessoaDto();
 		pessoaDto.nome = pessoaEntity.getNome();
 		pessoaDto.idade = pessoaEntity.getIdade();
+		pessoaDto.senha = pessoaEntity.getSenha();
 		pessoaDto.genero = pessoaEntity.getGenero();
 		
 		return pessoaDto;
@@ -21,6 +22,7 @@ public class PessoaMapper {
 		PessoaEntity pessoaEntity = new PessoaEntity();
 		pessoaEntity.setNome(pessoaDto.nome);
 		pessoaEntity.setIdade(pessoaDto.idade);
+		pessoaEntity.setSenha(pessoaDto.senha);
 		pessoaEntity.setGenero(pessoaDto.genero);
 		
 		return pessoaEntity;

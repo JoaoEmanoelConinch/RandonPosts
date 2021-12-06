@@ -9,5 +9,6 @@ public class PessoaDto implements Serializable {
 	public String nome;
 	public Byte idade;
 	public Genero genero;
+	public String senha;
 
 }
