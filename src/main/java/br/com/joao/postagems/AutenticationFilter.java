@@ -23,9 +23,9 @@ public class AutenticationFilter implements Filter {
             throws IOException, ServletException {
 
         final HttpServletRequest servletRequest = (HttpServletRequest) request;
-        final String autorization = servletRequest.getHeader("autorization");
+        final String authorization = servletRequest.getHeader("authorization");
 
-        if (autorization.equals("123")){
+        if (authorization.equals("123")){
             chain.doFilter(request,response);
         } else {
             final HttpServletResponse servletResponse = (HttpServletResponse) response;

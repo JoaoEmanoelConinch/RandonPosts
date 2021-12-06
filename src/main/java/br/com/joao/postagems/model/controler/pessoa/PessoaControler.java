@@ -68,10 +68,10 @@ public class PessoaControler {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public void delete(@PathVariable(value = "id") long id) {
+	public void delete(@PathVariable(value = "id") Long id) {
 		var pessoa = pessoaRepo.findById(id);
 		if(pessoa.isPresent()){
-			pessoaRepo.deleteAllById(id);
+			pessoaRepo.deleteById(id);
 		}
 	}
 	

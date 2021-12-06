@@ -11,7 +11,7 @@ public class GloblalException {
 
     @ExceptionHandler({NullPointerException.class})
     public ResponseEntity<String> handleEx(Exception ex, WebRequest request){
-        return new ResponseEntity<>("Fanha interna: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>("Falha interna: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
